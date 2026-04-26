@@ -1,12 +1,17 @@
 # Repo map
 
-_Generated 2026-04-26T14:10:17+00:00 by `agent_stack/tools/build_repo_map.py`. Do not edit by hand — re-run the tool._
+_Generated 2026-04-26T15:48:20+00:00 by `agent_stack/tools/build_repo_map.py`. Do not edit by hand — re-run the tool._
 
 ## Subprojects
 
+### `agent_stack/`  (unknown)
+
+- Has own `.git`: **True**
+- Files by language: python=5, config=1, docs=26
+
 ### `pi_backend/`  (python)
 
-- Has own `.git`: **False**
+- Has own `.git`: **True**
 - Files by language: python=19, shell=8, docs=6
 
 ### `pi_halow_bridge/PI-HALOW-BRIDGE/`  (python+embedded)

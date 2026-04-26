@@ -4,13 +4,29 @@ The executable substrate the Claude Code agents shell out to. The agent prompts 
 
 ## Contents
 
+### Cross-cutting docs (moved here from repo root 2026-04-25)
+
+| Path | Purpose |
+|---|---|
+| `CLAUDE.md` | Claude Code entry point — read first |
+| `AGENTS.md` | Specialist agent index |
+| `ARCHITECTURE.md` | Post-cleanup big-picture overview of the 4 subprojects |
+| `SYSTEM_ARCHITECTURE.md` | Cross-subproject software event flow + timing budget |
+| `PHYSICAL_ARCHITECTURE.md` | Cross-subproject hardware compute layers + power domains |
+| `ESTOP_REBUILD_PLAN.md` | v2.1 design for the 2026-04-24 E-STOP rebuild (R0-R10) |
+| `ESTOP_BENCH_TEST.md` | Hardware bench-test runbook for the rebuilt E-STOP |
+| `IMPLEMENTATION_WORKFLOW.md` | Cross-subproject delivery workflow for R-milestones |
+
+### Stack internals
+
 | Path | Purpose |
 |---|---|
 | `conventions.md` | Repo conventions every agent must respect |
 | `repo_map.md` / `repo_map.json` | Module map. Regenerate with `tools/build_repo_map.py` |
 | `workflows/` | Reusable task templates the orchestrator picks from |
 | `gates/destructive_ops.yaml` | Patterns that gate destructive ops |
-| `gates/safety_invariants.md` | Non-negotiable safety rules |
+| `gates/safety_invariants.md` | Non-negotiable safety rules (SI-1 through SI-12) |
+| `audits/` | Audit findings + cleanup records (2026-04-23, 2026-04-25) |
 | `tools/build_repo_map.py` | Walks the repo, emits the maps |
 | `tools/validate.py` | Unified validator: python tests, flutter analyze, firmware build, sim |
 | `tools/safety_check.py` | Scans a proposed diff/command set against the gates |

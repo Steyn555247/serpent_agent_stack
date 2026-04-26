@@ -60,19 +60,19 @@ When a change spans subprojects, write a single plan but produce **separate comm
 
 - Project-level docs (architecture, safety, releases) live under each subproject's root, in `UPPER_SNAKE_CASE.md`. This matches existing convention (e.g. `SAFETY_HARDENING.md`).
 - Component-level READMEs (`firmware/winch_station/README.md`) live next to the component.
-- Agent stack docs live under `agent_stack/`.
-- Repo-root markdown is restricted to the following enumerated inventory of 7 files:
-  - `AGENTS.md` — agent-stack entry point (reserved)
-  - `CLAUDE.md` — agent-stack entry point (reserved)
-  - `ESTOP_BENCH_TEST.md` — multi-host safety bench procedure
-  - `ESTOP_REBUILD_PLAN.md` — multi-host safety rebuild plan
-  - `IMPLEMENTATION_WORKFLOW.md` — cross-subproject delivery workflow
-  - `PHYSICAL_ARCHITECTURE.md` — cross-subproject physical layout
-  - `SYSTEM_ARCHITECTURE.md` — cross-subproject system map
-  - (Historical audit findings live under `agent_stack/audits/` — e.g. `2026-04-23-audit-findings.md` — not at repo root. The frozen `SAFETY_AUDIT_ESTOP.md` incident record was moved to `pi_halow_bridge/PI-HALOW-BRIDGE/archive/` 2026-04-25.)
-- Allowed root-level docs are limited to two categories: agent-stack entry points (`CLAUDE.md`, `AGENTS.md`), and safety-, architecture-, or rebuild-plan documents that span both subprojects in `UPPER_SNAKE_CASE.md` (e.g. `SYSTEM_ARCHITECTURE.md` for cross-subproject map, `ESTOP_REBUILD_PLAN.md` / `ESTOP_BENCH_TEST.md` for multi-host safety work).
-- Adding a new root-level markdown file requires updating this convention's enumerated list above and stating which cross-subproject concern it documents. Otherwise it belongs under a subproject root or `agent_stack/`.
-- Subproject-internal docs (only relevant to one of `pi_halow_bridge/PI-HALOW-BRIDGE/` or `serpent_trimui_app/`) stay in that subproject's root, never at repo top.
+- All cross-cutting docs (agent-stack entry points, safety architecture, rebuild plans, bench procedures, system + physical architecture, big-picture overview) live under `agent_stack/`. As of 2026-04-25 the canonical inventory there is:
+  - `agent_stack/CLAUDE.md` — Claude Code entry point (reserved)
+  - `agent_stack/AGENTS.md` — specialist agent index (reserved)
+  - `agent_stack/ARCHITECTURE.md` — post-cleanup big-picture overview
+  - `agent_stack/SYSTEM_ARCHITECTURE.md` — cross-subproject software event flow + timing
+  - `agent_stack/PHYSICAL_ARCHITECTURE.md` — cross-subproject hardware compute layers
+  - `agent_stack/ESTOP_REBUILD_PLAN.md` — multi-host safety rebuild plan
+  - `agent_stack/ESTOP_BENCH_TEST.md` — multi-host safety bench procedure
+  - `agent_stack/IMPLEMENTATION_WORKFLOW.md` — cross-subproject delivery workflow
+  - (Historical audit findings live under `agent_stack/audits/` — e.g. `2026-04-23-audit-findings.md`, `2026-04-25-cleanup-final.md`. The frozen `SAFETY_AUDIT_ESTOP.md` incident record was moved to `pi_halow_bridge/PI-HALOW-BRIDGE/archive/` 2026-04-25.)
+- **The repo top level holds zero markdown files.** A `.repo_layout` plain-text marker at repo root lists the 4 subproject GitHub URLs and points at `agent_stack/CLAUDE.md` as the entry point — this is the only file at repo root that exists for orientation, and it is not git-tracked.
+- Adding a new cross-cutting markdown requires placing it under `agent_stack/` (never at repo root) and adding it to this enumerated list. Subproject-scoped docs belong inside the subproject they document.
+- Subproject-internal docs (only relevant to one of `pi_halow_bridge/PI-HALOW-BRIDGE/`, `serpent_trimui_app/`, or `pi_backend/`) stay in that subproject's root, never at repo top and never inside `agent_stack/`.
 
 ## 6. Logging
 

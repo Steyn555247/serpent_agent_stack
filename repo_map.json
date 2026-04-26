@@ -1,7 +1,26 @@
 {
-  "generated_utc": "2026-04-26T14:10:17+00:00",
+  "generated_utc": "2026-04-26T15:48:20+00:00",
   "repo_root": "C:/Serpent Dev/Serpent/Digital/App/Real Prototype",
   "subprojects": [
+    {
+      "path": "agent_stack",
+      "kind": "unknown",
+      "language_counts": {
+        "python": 5,
+        "dart": 0,
+        "arduino": 0,
+        "shell": 0,
+        "config": 1,
+        "docs": 26
+      },
+      "entrypoints": {
+        "build": [],
+        "test": [],
+        "sim": [],
+        "service": []
+      },
+      "has_own_git": true
+    },
     {
       "path": "pi_backend",
       "kind": "python",
@@ -19,7 +38,7 @@
         "sim": [],
         "service": []
       },
-      "has_own_git": false
+      "has_own_git": true
     },
     {
       "path": "pi_halow_bridge/PI-HALOW-BRIDGE",
