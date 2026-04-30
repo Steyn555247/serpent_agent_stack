@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-04-26T15:48:20+00:00",
+  "generated_utc": "2026-04-28T03:01:16+00:00",
   "repo_root": "C:/Serpent Dev/Serpent/Digital/App/Real Prototype",
   "subprojects": [
     {
@@ -30,7 +30,7 @@
         "arduino": 0,
         "shell": 8,
         "config": 0,
-        "docs": 6
+        "docs": 8
       },
       "entrypoints": {
         "build": [],
@@ -44,29 +44,34 @@
       "path": "pi_halow_bridge/PI-HALOW-BRIDGE",
       "kind": "python+embedded",
       "language_counts": {
-        "python": 108,
+        "python": 128,
         "dart": 0,
         "arduino": 1,
         "shell": 8,
         "config": 0,
-        "docs": 12
+        "docs": 15
       },
       "entrypoints": {
         "build": [],
         "test": [
           "pi_halow_bridge/PI-HALOW-BRIDGE/scripts/test_all.py",
           "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_actuator_controller.py",
+          "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_actuator_controller_dead_motoron_channels.py",
           "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_autonomous_cutter_observability_tick.py",
           "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_base_pi_estop.py",
           "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_base_watchdog.py",
           "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_base_watchdog_observability_tick.py",
           "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_bridge_estop.py",
           "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_bridge_wiring.py",
+          "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_command_executor_chainsaw_routes_to_stepper.py",
           "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_command_executor_estop.py",
           "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_command_executor_observability_tick.py",
           "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_control_server_fast_engage.py",
           "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_control_server_observability_tick.py",
           "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_cross_channel_echo.py",
+          "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_dashboard_field_control.py",
+          "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_dashboard_field_control_integration.py",
+          "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_display_panel.py",
           "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_estop.py",
           "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_estop_integration.py",
           "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_fault_counters.py",
@@ -75,8 +80,12 @@
           "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_host_metrics.py",
           "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_link_dropout.py",
           "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_loop_health.py",
+          "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_pi_install_smoke.py",
           "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_robot_watchdog.py",
           "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_safety_constants.py",
+          "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_stepper_chainsaw.py",
+          "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_stepper_chainsaw_estop_latency.py",
+          "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_stepper_chainsaw_watchdog.py",
           "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_telemetry_two_stamp.py",
           "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_transition_logger.py",
           "pi_halow_bridge/PI-HALOW-BRIDGE/tests/test_watchdog_monitor_observability_tick.py",
@@ -92,7 +101,8 @@
           "pi_halow_bridge/PI-HALOW-BRIDGE/dashboard/systemd/serpent-dashboard-headless.service",
           "pi_halow_bridge/PI-HALOW-BRIDGE/dashboard/systemd/serpent-dashboard-robot.service",
           "pi_halow_bridge/PI-HALOW-BRIDGE/systemd/serpent-base-bridge.service",
-          "pi_halow_bridge/PI-HALOW-BRIDGE/systemd/serpent-robot-bridge.service"
+          "pi_halow_bridge/PI-HALOW-BRIDGE/systemd/serpent-robot-bridge.service",
+          "pi_halow_bridge/PI-HALOW-BRIDGE/systemd/serpent-robot-display.service"
         ]
       },
       "has_own_git": true
@@ -106,7 +116,7 @@
         "arduino": 0,
         "shell": 0,
         "config": 2,
-        "docs": 16
+        "docs": 18
       },
       "entrypoints": {
         "build": [

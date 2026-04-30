@@ -1,5 +1,7 @@
 # Serpent Real Prototype — Claude Code entry point
 
+> **New to this repo? Start with [SYSTEM_SETUP.md](../SYSTEM_SETUP.md).**
+
 This repo contains the production prototype of the Serpent rope-climbing robot stack:
 
 - **`pi_halow_bridge/PI-HALOW-BRIDGE/`** — Python 3 safety-critical bridge between Base Pi and Robot Pi over ALFA HaLow 802.11ah, plus ESP32 winch-station firmware (Arduino/PlatformIO). Mature `unittest` suite under `tests/`, simulation under `scripts/run_sim.py`, stress under `scripts/run_stress_suite.py`. **All control paths must remain fail-safe** — see `pi_halow_bridge/PI-HALOW-BRIDGE/SAFETY_HARDENING.md`.

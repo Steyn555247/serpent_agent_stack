@@ -63,7 +63,7 @@ Three machines in the hot path: **Robot Pi** (on the robot), **Base Pi** (at the
 
 A two-chainsaw tree-climbing / pruning robot that hangs off a rope. Key subsystems on the robot body:
 
-- **2 chainsaws** — each has an on/off motor and a position/traverse motor.
+- **2 chainsaws** — each has an on/off motor (Motoron-driven brushed DC, Motors 4 & 5) and a feed/position motor (NEMA stepper driven STEP/DIR by `pigpio` DMA from Robot Pi GPIO, Motors 2 & 3 — chainsaw stepper migration 2026-04-26, see `pi_halow_bridge/PI-HALOW-BRIDGE/SAFETY_HARDENING.md` "Chainsaw stepper migration").
 - **Ascender (Motor 6)** — the load-bearing motor that moves the robot up and down the rope. This is the single most safety-critical actuator on the whole robot.
 - **Traverse (Motor 7)** — moves the robot laterally along a horizontal rope run.
 - **2 clamps** — servo-driven (via PCA9685) grippers for securing to branches.
@@ -178,7 +178,8 @@ Different piece of Level-0 silicon, same tier.
 | HaLow radio (Robot-side) | Robot body | Robot battery pack |
 | Robot Pi | Robot body | Robot battery pack (regulated 5 V) |
 | Motoron boards ×4 | Robot body | Battery pack (motor-level voltage, typically 12 V / 24 V through Motoron) |
-| 8 DC motors (chainsaws, ascender, traverse, clamp actuators) | Robot body | Driven by Motorons from main battery |
+| 6 DC motors (chainsaws on/off ×2, ascender, traverse, claw, …) | Robot body | Driven by Motorons from main battery |
+| 2 NEMA steppers (chainsaw FEED ×2, Motors 2 & 3) | Robot body | STEP/DIR driven by `pigpio` DMA from Robot Pi GPIO 17/27/18/23. Driver hardware (DM542T-equivalent) powered from main battery; ENABLE pin tied high — Pi cannot disable coil current. See `pi_halow_bridge/PI-HALOW-BRIDGE/robot_pi/PIN_ASSIGNMENTS.md`. |
 | PCA9685 + servos | Robot body | 5 V from Robot Pi rail, through I²C multiplexer |
 | IMU / baro / current sensors | Robot body | 3.3 V from Robot Pi rail |
 | USB cameras ×3 | Robot body (mounted for POV + chainsaw views) | USB bus power from Robot Pi |

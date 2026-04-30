@@ -385,12 +385,12 @@ Key config files:
 
 | You want to… | Look at |
 |---|---|
-| Change the PSK | `scripts/generate_psk.py`, `setup_psk_on_hub.sh`, `/etc/serpent/psk` |
+| Change the PSK | `SYSTEM_SETUP.md` §6 — canonical flow: `scripts/generate_psk.py` → `/etc/serpent/psk` (root:root, 0600) → systemd `SERPENT_PSK_HEX` drop-in via `pi_enable_services.sh` |
 | Add a new button on the TrimUI | `lib/services/key_event_service.dart:_keyToButtonMap` + `lib/services/backend_service.dart` emit |
 | Add a new telemetry field | `agent_stack/examples/01_add_telemetry_field.md` (runbook exists because this touches 3+ files) |
 | Change a winch Modbus register | `firmware/winch_station/winch_station.ino:15-28` + `base_pi/winch_controller.py` in lockstep (SI-11) |
 | Change the watchdog timeout | **DON'T** without safety-gate review — `common/constants.py:WATCHDOG_TIMEOUT_S` |
-| Redeploy to a Pi | `setup_robot_pi.sh` or `setup_base_pi.sh`; `pi_install.sh` for the hub Pi |
+| Redeploy to a Pi | `scripts/pi_install.sh --robot` or `scripts/pi_install.sh --base`, then `scripts/pi_enable_services.sh --robot`/`--base`; see `SYSTEM_SETUP.md` §1 for the full quickstart |
 | Run the full test suite | `python "pi_halow_bridge/PI-HALOW-BRIDGE/scripts/test_all.py"` |
 | Run a simulation | `python "pi_halow_bridge/PI-HALOW-BRIDGE/scripts/run_sim.py"` |
 | Validate everything | `python agent_stack/tools/validate.py all` |

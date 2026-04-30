@@ -38,6 +38,8 @@ When a change spans subprojects, write a single plan but produce **separate comm
 - Hardware imports (`motoron`, `RPi.GPIO`, `adafruit_*`, `busio`, `board`) are **conditional** — they only import when `SIM_MODE` is false. Maintain that pattern; never make a hardware import unconditional.
 - All safety-critical modules (`actuator_controller.py`, `framing.py`, anything under `core/` that touches E-STOP) use a **single lock per concern** for atomicity. Don't introduce a second lock without coordinating.
 - New constants belong in `common/constants.py`. Do not duplicate magic numbers across modules.
+- GPIO pin numbers for the Robot Pi belong in `pi_halow_bridge/PI-HALOW-BRIDGE/robot_pi/pin_config.py` and are documented in `robot_pi/PIN_ASSIGNMENTS.md`. Do not inline GPIO literals in driver modules.
+- `pi_halow_bridge/PI-HALOW-BRIDGE/robot_pi/drivers/` (added 2026-04-26 with the chainsaw stepper migration) is the home for hardware driver modules that own a specific piece of GPIO/PWM hardware and are dispatched to from `actuator_controller.py`. Subpackage of `robot_pi/`, not a new top-level dir.
 
 ## 3. Embedded (firmware/)
 
@@ -70,8 +72,8 @@ When a change spans subprojects, write a single plan but produce **separate comm
   - `agent_stack/ESTOP_BENCH_TEST.md` — multi-host safety bench procedure
   - `agent_stack/IMPLEMENTATION_WORKFLOW.md` — cross-subproject delivery workflow
   - (Historical audit findings live under `agent_stack/audits/` — e.g. `2026-04-23-audit-findings.md`, `2026-04-25-cleanup-final.md`. The frozen `SAFETY_AUDIT_ESTOP.md` incident record was moved to `pi_halow_bridge/PI-HALOW-BRIDGE/archive/` 2026-04-25.)
-- **The repo top level holds zero markdown files.** A `.repo_layout` plain-text marker at repo root lists the 4 subproject GitHub URLs and points at `agent_stack/CLAUDE.md` as the entry point — this is the only file at repo root that exists for orientation, and it is not git-tracked.
-- Adding a new cross-cutting markdown requires placing it under `agent_stack/` (never at repo root) and adding it to this enumerated list. Subproject-scoped docs belong inside the subproject they document.
+- **The repo top level holds exactly one markdown file: `SYSTEM_SETUP.md`** (cross-cutting first-time setup runbook). It is permitted at repo root because it must be the literal first file a new operator opens — `agent_stack/CLAUDE.md` links to it as the starting point. All other cross-cutting docs live under `agent_stack/`. The "no new top-level directories" rule (CLAUDE.md, §8) is unrelated to this exception and still binding for non-markdown additions.
+- Adding a new cross-cutting markdown: prefer `agent_stack/`. Repo root is reserved for the single `SYSTEM_SETUP.md` entry runbook; do not add a second root-level markdown without an equally strong "must be the first file an operator sees" justification, recorded here. Subproject-scoped docs belong inside the subproject they document.
 - Subproject-internal docs (only relevant to one of `pi_halow_bridge/PI-HALOW-BRIDGE/`, `serpent_trimui_app/`, or `pi_backend/`) stay in that subproject's root, never at repo top and never inside `agent_stack/`.
 
 ## 6. Logging
